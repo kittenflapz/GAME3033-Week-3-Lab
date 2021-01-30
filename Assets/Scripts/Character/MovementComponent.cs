@@ -5,12 +5,8 @@ using UnityEngine.InputSystem;
 
 public class MovementComponent : MonoBehaviour
 {
-    //private PlayerInputActions PlayerActions;
 
-    //private void Awake()
-    //{
-    //    PlayerActions = new PlayerInputActions();
-    //}
+
 
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float RunSpeed;
@@ -83,20 +79,5 @@ public class MovementComponent : MonoBehaviour
         PlayerTransform.position += movementDirection;
     }
 
-    //private void OnEnable()
-    //{
-    //    PlayerActions.Enable();
-    //    PlayerActions.PlayerActionMap.Movement.performed += Movement;
-    //}
-
-    //private void Movement(InputAction.CallbackContext obj)
-    //{
-
-    //}
-
-    //private void OnDisable()
-    //{
-    //    PlayerActions.Disable();
-    //    PlayerActions.PlayerActionMap.Movement.performed -= Movement;
-    //}
+   
 }
