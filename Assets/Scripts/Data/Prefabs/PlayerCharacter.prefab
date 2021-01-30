@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1667485414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667485415}
+  m_Layer: 0
+  m_Name: Weapon Socket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1667485415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667485414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5157281355342179665}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2545943308950255929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,10 +3643,10 @@ Animator:
   m_GameObject: {fileID: 5154014850619999031}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 865a72598c675874eb4863f1b68b231c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3679,9 +3709,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf270fdf96b93a4baa9f3ce939d6420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiring: 0
-  isJumping: 0
-  isRunning: 0
+  CrossHairComponent: {fileID: 0}
+  IsFiring: 0
+  IsReloading: 0
+  IsJumping: 0
+  IsRunning: 0
 --- !u!1 &5154052339564375019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,7 +4465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5154105428998644531}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.2011557, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5157550352844560577}
@@ -5565,6 +5597,7 @@ Transform:
   - {fileID: 5155602507752250911}
   - {fileID: 5155644501762923887}
   - {fileID: 5157334070077542755}
+  - {fileID: 1667485415}
   m_Father: {fileID: 5155602324711463201}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

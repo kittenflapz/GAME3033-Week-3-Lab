@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool CursorActive { get; private set; }
+    public bool CursorActive { get; private set; } = true;
 
     // Start is called before the first frame update
     private void Awake()
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     {
         if (enable)
         {
+
+            print("doing this");
             CursorActive = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        AppEvents.MouseCursorEnabled += EnableCursor;   
+       AppEvents.MouseCursorEnabled += EnableCursor;   
     }
 
     private void OnDisable()

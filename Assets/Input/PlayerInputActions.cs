@@ -41,6 +41,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""cfadee25-6753-42c3-b920-770ab4bee355"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c27d272-ebef-4f44-b79f-985737844f2a"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -148,6 +167,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_PlayerActionMap_Movement = m_PlayerActionMap.FindAction("Movement", throwIfNotFound: true);
         m_PlayerActionMap_Jump = m_PlayerActionMap.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActionMap_Run = m_PlayerActionMap.FindAction("Run", throwIfNotFound: true);
+        m_PlayerActionMap_Look = m_PlayerActionMap.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -200,6 +220,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActionMap_Movement;
     private readonly InputAction m_PlayerActionMap_Jump;
     private readonly InputAction m_PlayerActionMap_Run;
+    private readonly InputAction m_PlayerActionMap_Look;
     public struct PlayerActionMapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -207,6 +228,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerActionMap_Movement;
         public InputAction @Jump => m_Wrapper.m_PlayerActionMap_Jump;
         public InputAction @Run => m_Wrapper.m_PlayerActionMap_Run;
+        public InputAction @Look => m_Wrapper.m_PlayerActionMap_Look;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -225,6 +247,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnRun;
+                @Look.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_PlayerActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -238,6 +263,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -256,5 +284,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

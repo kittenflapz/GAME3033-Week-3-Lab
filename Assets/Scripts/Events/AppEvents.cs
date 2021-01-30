@@ -10,6 +10,6 @@ public class AppEvents : MonoBehaviour
 
     public static void Invoke_OnMouseCursorEnable(bool enabled)
     {
-
+        MouseCursorEnabled?.Invoke(enabled);
     }
 }
