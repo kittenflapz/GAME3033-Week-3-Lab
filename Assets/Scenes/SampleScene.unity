@@ -274,7 +274,7 @@ MonoBehaviour:
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 1
-  IgnoreTag: 
+  IgnoreTag: Player
   CameraRadius: 0.2
 --- !u!114 &451452822
 MonoBehaviour:
@@ -541,6 +541,25 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1117630750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5154014850619999031, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+  m_PrefabInstance: {fileID: 482376704283785214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1117630756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117630750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feafb4b1c48d96499adbacf39f68642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponToSpawn: {fileID: 5917088950989247978, guid: c0b12cae076e5b34cbb0f86a80218f25, type: 3}
+  WeaponSocketLocation: {fileID: 1667485415}
 --- !u!1 &1344619118
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,17 +745,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ecbcf72177dbd2b4b9fea9700876321f, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 0}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
 --- !u!114 &1477162173
@@ -768,6 +787,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1667485415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1667485415, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+  m_PrefabInstance: {fileID: 482376704283785214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1914160292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 45914429442651577, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+      propertyPath: CrossHairComponent
+      value: 
+      objectReference: {fileID: 1344619122}
     - target: {fileID: 1350208400707273032, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -1398,9 +1426,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -88.826
       objectReference: {fileID: 0}
+    - target: {fileID: 4369883717454658852, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 4369883717454658852, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 1477162172}
     - target: {fileID: 5154014850619999031, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154014850619999031, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5157550352844560577, guid: 139f518d1195893469333fc0b70c0a05, type: 3}
       propertyPath: m_LocalPosition.x

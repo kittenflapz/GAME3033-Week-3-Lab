@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponHolder : MonoBehaviour
+public class WeaponHolder : InputMonoBehaviour
 {
     [Header("Weapon To Spawn"), SerializeField]
     private GameObject WeaponToSpawn;
@@ -19,8 +19,9 @@ public class WeaponHolder : MonoBehaviour
     // Ref
     Camera ViewCamera;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         PlayerController = GetComponent<PlayerController>();
         PlayerAnimator = PlayerController.GetComponent<Animator>();
         if (PlayerController)
@@ -37,10 +38,24 @@ public class WeaponHolder : MonoBehaviour
       Instantiate(WeaponToSpawn, WeaponSocketLocation.position, WeaponSocketLocation.rotation, WeaponSocketLocation);
     }
 
-    public void OnLook(InputValue delta)
+    public void OnLookFix(InputAction.CallbackContext obj)
     {
-        Vector2 independentMousePosition = ViewCamera.ScreenToViewportPoint(PlayerCrossHair.CurrentAimPosition);
-
+        Vector3 independentMousePosition = ViewCamera.ScreenToViewportPoint(PlayerCrossHair.CurrentAimPosition);
         print(independentMousePosition);
+
+        PlayerAnimator.SetFloat("AimHorizontal", independentMousePosition.x);
+        PlayerAnimator.SetFloat("AimVertical", independentMousePosition.y);
+    }
+
+    private new void OnEnable()
+    {
+        base.OnEnable();
+        GameInput.PlayerActionMap.Look.performed += OnLookFix;
+    }
+
+    private new void OnDisable()
+    {
+        base.OnDisable();
+        GameInput.PlayerActionMap.Look.performed -= OnLookFix;
     }
 }

@@ -74,8 +74,6 @@ public class Crosshair : InputMonoBehaviour
 
         CurrentAimPosition = new Vector2(crosshairXPosition, crosshairYPosition);
 
-        print(CurrentAimPosition);
-
         transform.position = CurrentAimPosition;
     }
 
