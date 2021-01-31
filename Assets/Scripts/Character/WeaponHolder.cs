@@ -11,6 +11,8 @@ public class WeaponHolder : InputMonoBehaviour
     [SerializeField]
     private Transform WeaponSocketLocation;
 
+    private Transform GripIKLocation;
+
     // Components
     PlayerController PlayerController;
     Crosshair PlayerCrossHair;
@@ -35,13 +37,38 @@ public class WeaponHolder : InputMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      Instantiate(WeaponToSpawn, WeaponSocketLocation.position, WeaponSocketLocation.rotation, WeaponSocketLocation);
+      GameObject spawnedWeapon = Instantiate(WeaponToSpawn, WeaponSocketLocation.position, WeaponSocketLocation.rotation, WeaponSocketLocation);
+
+
+        if (spawnedWeapon)
+        {
+            WeaponComponent weapon = spawnedWeapon.GetComponent<WeaponComponent>();
+            if (weapon)
+            {
+                GripIKLocation = weapon.GripLocation;
+            }
+        }
+
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        PlayerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1f);
+        PlayerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, GripIKLocation.position);
+    }
+
+    public void OnReload(InputValue pressed)
+    {
+        PlayerAnimator.SetBool("IsReloading", pressed.isPressed);
+    }
+    public void OnFire(InputValue pressed)
+    {
+        PlayerAnimator.SetBool("IsFiring", pressed.isPressed);
     }
 
     public void OnLookFix(InputAction.CallbackContext obj)
     {
         Vector3 independentMousePosition = ViewCamera.ScreenToViewportPoint(PlayerCrossHair.CurrentAimPosition);
-        print(independentMousePosition);
 
         PlayerAnimator.SetFloat("AimHorizontal", independentMousePosition.x);
         PlayerAnimator.SetFloat("AimVertical", independentMousePosition.y);
